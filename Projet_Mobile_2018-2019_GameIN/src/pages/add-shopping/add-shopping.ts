@@ -10,7 +10,7 @@ import { ShoppingItem } from '../../models/shopping-item/shopping-item.interface
 })
 export class AddShoppingPage {
 
-  // Creating a new Object 
+  // Creation d'un nouvel objet 
   shoppingItem = {} as ShoppingItem;
 
   shoppingItemRef$: FirebaseListObservable<ShoppingItem[]>
@@ -18,31 +18,23 @@ export class AddShoppingPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private database: AngularFireDatabase) {
     this.shoppingItemRef$ = this.database.list('shopping-list');
 
-    /*
-      shopping-list:
-        0:
-          itemName: 'Pizza',
-          itemNumber: 1
-        1:
-          itemName: 'Cheesecake',
-          itemNumber: 5
-    */
   }
   
   addShoppingItem(shoppingItem: ShoppingItem) {
     /*
-      Create a new anonymous object and convert itemNumber to a number.
-      Push this to our Firebase database under the 'shopping-list' node.
+      Créer un objet anonyme et convertir itemNumber à un numéro.
+      Envoyez ceci à notre base de données Firebase sous le noeud 'shopping-list'.
     */
     this.shoppingItemRef$.push({
       itemName: this.shoppingItem.itemName,
+      itemDetail: this.shoppingItem.itemDetail,
       itemNumber: Number(this.shoppingItem.itemNumber)
     });
 
-    // Reset our ShoppingItem
+    // Réinitialiser notre ShoppingItem
     this.shoppingItem = {} as ShoppingItem;
 
-    // Navigate the user back to the ShoppingListPage
+    // Revenez à l'utilisateur jusqu'à la page ShoppingList
     this.navCtrl.pop();
   }
 

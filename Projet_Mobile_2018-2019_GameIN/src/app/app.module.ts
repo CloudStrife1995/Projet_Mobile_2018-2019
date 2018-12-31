@@ -27,9 +27,9 @@ import { HomePage } from '../pages/home/home';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    // Initialise AngularFire with credientials from the dashboard
+    // Initialisation de AngularFire avec credientials du tableau de bord
     AngularFireModule.initializeApp(FIREBASE_CREDENTIALS),
-    // Import the AngularFireDatabaseModule to use database interactions
+    // Importation de AngularFireDatabaseModule pour intéragir avec la base de données
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],

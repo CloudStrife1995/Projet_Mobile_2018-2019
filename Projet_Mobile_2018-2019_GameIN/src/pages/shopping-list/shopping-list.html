@@ -1,0 +1,43 @@
+
+<ion-header>
+ 
+  <ion-navbar color="secondary">
+    <ion-title>GameIn</ion-title>
+    <ion-buttons end> 
+      <button ion-button icon-only 
+      (click)="navigateToAddShoppingPage()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="image-1">
+
+    <ion-item class="logo">
+        <ion-label color="blanche" style="font-size:16px" name="email" required stacked>Email</ion-label>
+        <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+  
+    <ion-item class="logo">
+          <ion-label color="blanche" style="font-size:16px" name="password" required stacked>Mot de passe</ion-label>
+          <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+    </ion-item> 
+
+    
+
+    <button ion-button (click)="login(user)">Connexion</button>  
+    <button ion-button color ="light" (click)="register()">S'enregistrer</button>
+
+  <ion-list>
+    <!-- Répétez ion-item pour tous les articles que nous avons dans notre liste d’achats. -->
+    <ion-item *ngFor="let item of shoppingListRef$ | async" (click)="selectShoppingItem(item)">
+      <h2>Jeu: {{item.itemName}}</h2>
+      <h3>Description: {{item.itemDetail}}</h3>
+      <h4>Prix: {{item.itemNumber}}</h4>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

@@ -9,14 +9,19 @@
 
 <ion-content padding>
   <ion-item>
-    <ion-label floating>Item Name</ion-label>
+    <ion-label floating>Jeux</ion-label>
     <ion-input type="text" [(ngModel)]="shoppingItem.itemName"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label floating>Number</ion-label>
+    <ion-label floating>Description</ion-label>
+    <ion-input type="text" [(ngModel)]="shoppingItem.itemDetail"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Prix</ion-label>
     <ion-input type="number" [(ngModel)]="shoppingItem.itemNumber"></ion-input>
   </ion-item>
 
-  <button ion-button block (click)="editShoppingItem(shoppingItem)">Edit Item</button>
+  <button ion-button block (click)="editShoppingItem(shoppingItem)">Modifier le jeu</button>
 </ion-content>

@@ -27,8 +27,8 @@ export class ShoppingListPage {
     private database: AngularFireDatabase,
     private actionSheetCtrl: ActionSheetController) {
     /*
-      Pointing shoppingListRef$ at Firebase -> 'shopping-list' node.
-      That means not only can we push things from this reference to the database, but ALSO we have access to everything inside of that node. 
+      Pointage de shoppingListRef $ sur Firebase -> noeud 'shopping-list' .
+      Cela signifie que nous pouvons non seulement pousser les éléments de cette référence vers la base de données, mais nous avons aussi accès à tout ce qui se trouve à l'intérieur de ce noeud. 
     */
     this.shoppingListRef$ = this.database.list('shopping-list');
   }
@@ -51,43 +51,35 @@ async login(user: User) {
     this.navCtrl.push(RegisterPage);
   }
   /*
-    Display an ActionSheet that gives the user the following options:
+    Affichez une feuille d'action qui offre à l'utilisateur les options suivantes:
 
-    1. Edit the ShoppingItem
-    2. Delete the ShoppingItem
-    3. Cancel the selection
+    1. Editer le ShoppingItem
+    2. Supprimer le ShoppingItem
+    3. Annuler la sélection
   */
   selectShoppingItem(shoppingItem: ShoppingItem) {
     this.actionSheetCtrl.create({
       title: `${shoppingItem.itemName}`,
       buttons: [
         {
-          text: 'Edit',
+          text: 'Modifier',
           handler: () => {
-            // Send the user to the EditShoppingItemPage and pass the key as a parameter
+            // Envoyez l'utilisateur à EditShoppingItemPage et transmettez la clé en tant que paramètre
             this.navCtrl.push(EditShoppingItemPage,
               { shoppingItemId: shoppingItem.$key });
             
-            /*
-             Navigation stack:
-             
-              ['ShoppingListPage',
-               'EditShoppingItemPage',
-               { shoppingItemId: '-KowULdyLOK4ruWoKhws'}]
-            
-            */
           }
         },
         {
-          text: 'Delete',
+          text: 'Supprimer',
           role: 'destructive',
           handler: () => {
-            // Delete the current ShoppingItem, passed in via the parameter
+            // Supprimer le ShoppingItem actuel, transmis via le paramètre
             this.shoppingListRef$.remove(shoppingItem.$key);
           }
         },
         {
-          text: 'Cancel',
+          text: 'Annuler',
           role: 'cancel',
           handler: () => {
             console.log("The user has selected the cancel button");
@@ -99,7 +91,7 @@ async login(user: User) {
 
 
   navigateToAddShoppingPage() {
-    // Navigate the user to the AddShoppingPage
+    // Naviguer l'utilisateur vers AddShoppingPage
     this.navCtrl.push(AddShoppingPage);
   }
 

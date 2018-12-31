@@ -20,31 +20,31 @@ export class EditShoppingItemPage {
     public navParams: NavParams,
     private database: AngularFireDatabase) {
     
-    // Capture the shoppingItemId as a NavParameter
+    // Capturer l'ID d'élément d'achat en tant que paramètre de navigation
     const shoppingItemId = this.navParams.get('shoppingItemId');
 
-    // Log out the NavParam
+    // Déconnectez-vous du NavParam
     console.log(shoppingItemId);
 
-    // Set the scope of our Firebase Object equal to our selected item
+    // Définissez l'étendue de notre objet Firebase égale à l'élément sélectionné
     this.shoppingItemRef$ = this.database.object(`shopping-list/${shoppingItemId}`);
 
-    // Subscribe to the Object and assign the result to this.shoppingItem
+    // Abonnez-vous à l'objet et assignez le résultat à this.shoppingItem
     this.shoppingItemSubscription =
       this.shoppingItemRef$.subscribe(
       shoppingItem => this.shoppingItem = shoppingItem);
   }
 
   editShoppingItem(shoppingItem: ShoppingItem) {
-    // Update our Firebase node with new item data
+    // Mettre à jour notre noeud Firebase avec les nouvelles données des éléments
     this.shoppingItemRef$.update(shoppingItem);
 
-    // Send the user back to the ShoppingListPage
+    // Renvoyer l'utilisateur à la ShoppingListPage
     this.navCtrl.pop();
   }
 
   ionViewWillLeave() {
-    // Unsubscribe from the Observable when leaving the page
+    // Se désabonner de l'Observable en quittant la page
     this.shoppingItemSubscription.unsubscribe();
   }
 

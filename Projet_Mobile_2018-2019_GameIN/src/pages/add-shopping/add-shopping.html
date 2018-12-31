@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-navbar color="dark">
+    <ion-title>Ajouter des jeux</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="image-3">
+
+  <ion-item class="logo2">
+    <ion-label floating>Jeu</ion-label>
+    <ion-input type="text" [(ngModel)]="shoppingItem.itemName"></ion-input>
+  </ion-item>
+
+  <ion-item class="logo2">
+    <ion-label floating>Description</ion-label>
+    <ion-input type="text" [(ngModel)]="shoppingItem.itemDetail"></ion-input>
+  </ion-item>
+
+  <ion-item class="logo2">
+    <ion-label floating>Prix</ion-label>
+    <ion-input type="number" [(ngModel)]="shoppingItem.itemNumber"></ion-input>
+  </ion-item>
+
+  <button ion-button block (click)="addShoppingItem(shoppingItem)" color="dark">Ajouter le jeu</button>
+</ion-content>
